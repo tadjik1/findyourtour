@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { mount } from '@vue/test-utils'
+import { mount } from './test-utils'
 import TourCard from '@/components/TourCard.vue'
 
 describe('TourCard.vue', () => {

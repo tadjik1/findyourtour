@@ -4,13 +4,13 @@
       <img class="card-image-picture" :src="tour.image" :alt="tour.title" />
       <figcaption class="card-image-badge" v-if="tour.isSpecialOffer">
         <i class="fas fa-crown"></i>
-        <span class="badge-text">Special Offer</span>
+        <span class="badge-text">{{ $t("special-offer-badge") }}</span>
       </figcaption>
     </figure>
     <div class="card-information">
       <h2 class="title" v-html="title"></h2>
       <div class="card-meta">
-        <span class="rating" v-bind:class="ratingClassName"></span>
+        <span class="rating" :class="ratingClassName"></span>
         <p class="price">{{ `${tour.currency} ${tour.price}` }}</p>
       </div>
     </div>

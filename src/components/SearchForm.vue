@@ -1,8 +1,8 @@
 <template>
   <div class="search-form">
     <input
-      v-bind:value="query"
-      v-on:input="$emit('input', $event.target.value)"
+      :value="query"
+      @input="$emit('input', $event.target.value)"
       class="search-input"
       placeholder="Reichstag" />
     <i class="fas fa-search search-icon"></i>

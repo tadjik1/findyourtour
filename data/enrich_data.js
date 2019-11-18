@@ -1,6 +1,8 @@
 /*
 * This is small utility script that enriches original data with images from unsplash.com. Hopefully
 * with similar meaning (it uses tour title as search query for photo).
+*
+* for usage run "node data/enrich_data"
 * */
 
 /* eslint-disable no-console */
@@ -11,6 +13,7 @@ const uuid = require('uuid/v4')
 const path = require('path')
 const fs = require('fs')
 const client = axios.create({
+  validateStatus (status) { return status === 302 },
   maxRedirects: 0
 })
 
@@ -29,7 +32,10 @@ async function main () {
     tour.image = images[i]
   }
 
-  fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify(data, null, 2))
+  fs.writeFileSync(
+    path.join(__dirname, '../src/assets/tours.json'),
+    JSON.stringify(data, null, 2)
+  )
 }
 
 main()

@@ -1,0 +1,9 @@
+{
+  "en": {
+    "intro": "Find the best activities in Berlin!",
+    "no-results": "Unfortunately there are currently no tours by your query, but check what else we have for you!",
+    "section-results-header": "Search results for \"{query}\"",
+    "section-special-offers-header": "Special offers",
+    "special-offer-badge": "Special Offer"
+  }
+}

@@ -3,7 +3,7 @@
     <section class="header">
       <div class="container">
         <div class="header-content">
-          <header class="title">Find the best activities in Berlin!</header>
+          <header class="title">{{ $t("intro") }}</header>
           <SearchForm v-model="state.input"></SearchForm>
         </div>
       </div>
@@ -11,11 +11,10 @@
     <section class="content container">
       <Loader v-if="state.loading"></Loader>
       <p v-else-if="state.isSearchFailed" class="no-results">
-        Unfortunately there are currently no tours by your query, but
-        check what else we have for you!
+        {{ $t("no-results") }}
       </p>
       <div v-else-if="state.results.length !== 0">
-        <header class="section-title">Search results for "{{state.query}}"</header>
+        <header class="section-title">{{ $t("section-results-header", { query: state.query }) }}</header>
         <div class="tour-list">
           <article class="tour" v-for="id in state.results" :key="id">
             <TourCard :tour="data.tours[id]"></TourCard>
@@ -23,7 +22,7 @@
         </div>
       </div>
       <div v-if="state.results.length === 0">
-        <header class="section-title">Special offers</header>
+        <header class="section-title">{{ $t("section-special-offers-header") }}</header>
         <div class="tour-list">
           <article class="tour" v-for="id in data.offers" :key="id">
             <TourCard :tour="data.tours[id]"></TourCard>
@@ -38,7 +37,7 @@
 import debounce from 'lodash/debounce'
 import Fuse from 'fuse.js'
 
-import data from '../data/data.json'
+import data from '../assets/tours.json'
 
 import SearchForm from './SearchForm'
 import TourCard from './TourCard'
@@ -80,7 +79,8 @@ export default {
       this.state.loading = true
       // simulate async search
       setTimeout(() => {
-        // do not touch state if user types something while we were awaiting response for prev query
+        // do not touch state if user types something while we were awaiting
+        // response for prev query
         if (this.state.input !== value) return
         this.state.loading = false
         this.state.results = this.data.fuse.search(value)
@@ -182,6 +182,10 @@ export default {
 }
 
 @media (min-width: 1024px) {
+  .header-content {
+    padding: 0;
+  }
+
   .section-title {
     margin: 10px 0 15px;
   }
