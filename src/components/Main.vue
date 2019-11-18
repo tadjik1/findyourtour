@@ -44,8 +44,6 @@ import SearchForm from './SearchForm'
 import TourCard from './TourCard'
 import Loader from './Loader'
 
-
-
 export default {
   name: 'Main',
   components: {
