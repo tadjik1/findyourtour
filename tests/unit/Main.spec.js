@@ -37,7 +37,7 @@ describe('Main.vue', () => {
     await Vue.nextTick()
 
     const sectionTitle = wrapper.find('.section-title')
-    expect(sectionTitle.text()).to.eql('Special offers')
+    expect(sectionTitle.text()).to.eql('section-special-offers-header')
 
     expect(wrapper.find(TourCard).exists()).to.be.true // eslint-disable-line no-unused-expressions
     expect(wrapper.find(TourCard).props('tour')).to.eql(tour)
@@ -75,7 +75,7 @@ describe('Main.vue', () => {
     await Vue.nextTick()
 
     const sectionTitle = wrapper.find('.section-title')
-    expect(sectionTitle.text()).to.contains('Search results for')
+    expect(sectionTitle.text()).to.eql('section-results-header')
 
     expect(wrapper.find(TourCard).exists()).to.be.true // eslint-disable-line no-unused-expressions
     expect(wrapper.find(TourCard).props('tour')).to.eql(tour)
@@ -114,10 +114,10 @@ describe('Main.vue', () => {
 
     const noResults = wrapper.find('.no-results')
     expect(noResults.exists()).to.be.true // eslint-disable-line no-unused-expressions
-    expect(noResults.text()).to.eql('Unfortunately there are currently no tours by your query, but check what else we have for you!')
+    expect(noResults.text()).to.eql('no-results')
 
     const sectionTitle = wrapper.find('.section-title')
-    expect(sectionTitle.text()).to.eql('Special offers')
+    expect(sectionTitle.text()).to.eql('section-special-offers-header')
 
     expect(wrapper.find(TourCard).exists()).to.be.true // eslint-disable-line no-unused-expressions
     expect(wrapper.find(TourCard).props('tour')).to.eql(tour)
